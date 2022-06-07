@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PersonalDetailsForm from './components/PersonalDetailsForm';
+import PersonalDetailsView from './components/PersonalDetailsView';
 import './App.css';
 
 class App extends Component {
@@ -30,6 +31,8 @@ class App extends Component {
         [name]: value
       }
     }));
+
+    console.log(this.state);
   }
 
   render() {
@@ -39,7 +42,7 @@ class App extends Component {
           <PersonalDetailsForm onFormChange={this.handlePersonalDetailsChange} />
         </div>
         <div className='App-right'>
-
+          <PersonalDetailsView {...this.state.personalDetails} />
         </div>
       </div>
     );

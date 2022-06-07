@@ -15,7 +15,7 @@ class PersonalDetailsForm extends Component {
                 <input type='text' name='phone' placeholder='Phone' onChange={this.handleChange} />
                 <input type='text' name='email' placeholder='Email' onChange={this.handleChange} />
                 <input type='text' name='location' placeholder='Location' onChange={this.handleChange} />
-                <textarea name='description' placeholder='Description' onChange={this.handleChange} />
+                <textarea name='summary' placeholder='Summary' onChange={this.handleChange} />
             </form>  
         );
     }
