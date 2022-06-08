@@ -1,25 +1,52 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import GeneralView from './components/GeneralView';
+import GeneralForm from './components/GeneralForm';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      personalDetails: {
+        name: '',
+        title: '',
+        phone: '',
+        email: '',
+        location: '',
+        summary: '',
+      },
+    };
+  }
+
+  handlePersonalDetailsChange = (event) => {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState((prevState) => ({
+      ...prevState,
+      personalDetails: {
+        ...prevState.personalDetails,
+        [name]: value
+      }
+    }));
+
+    console.log(this.state);
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <div className='App-left'>
+          <GeneralForm onFormChange={this.handlePersonalDetailsChange} />
+        </div>
+        <div className='App-right'>
+          <GeneralView {...this.state.personalDetails} />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
