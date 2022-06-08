@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GeneralView from './components/GeneralView';
 import GeneralForm from './components/GeneralForm';
+import EducationForm from './components/EducationForm';
 import './App.css';
 
 class App extends Component {
@@ -40,6 +41,7 @@ class App extends Component {
       <div className="App">
         <div className='App-left'>
           <GeneralForm onFormChange={this.handlePersonalDetailsChange} />
+          <EducationForm />
         </div>
         <div className='App-right'>
           <GeneralView {...this.state.personalDetails} />

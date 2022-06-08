@@ -22,3 +22,27 @@ form textarea {
     border-radius: 8px;
     resize: none;
 }
+
+.btn-row {
+    display: flex;
+    column-gap: 10px;
+}
+
+.btn {
+    border: none;
+    text-decoration: none;
+    font-size: 12px;
+    border-radius:8px;
+    height: 32px;
+    width: 80px;
+}
+
+.btn-success {
+    background-color: #34d399;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #fb7185;
+    color: white;
+}
