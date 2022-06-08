@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PersonalDetailsForm from './components/PersonalDetailsForm';
-import PersonalDetailsView from './components/PersonalDetailsView';
+import GeneralView from './components/GeneralView';
+import GeneralForm from './components/GeneralForm';
 import './App.css';
 
 class App extends Component {
@@ -39,10 +39,10 @@ class App extends Component {
     return (
       <div className="App">
         <div className='App-left'>
-          <PersonalDetailsForm onFormChange={this.handlePersonalDetailsChange} />
+          <GeneralForm onFormChange={this.handlePersonalDetailsChange} />
         </div>
         <div className='App-right'>
-          <PersonalDetailsView {...this.state.personalDetails} />
+          <GeneralView {...this.state.personalDetails} />
         </div>
       </div>
     );

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/Form.css'
 
-class PersonalDetailsForm extends Component {
+class GeneralForm extends Component {
     handleChange = (event) => {
         this.props.onFormChange(event);
     }
@@ -9,7 +9,7 @@ class PersonalDetailsForm extends Component {
     render() {
         return (
             <form>
-                <h2>Personal Details</h2>
+                <h2>General</h2>
                 <input type='text' name='name' placeholder='Name' onChange={this.handleChange} />
                 <input type='text' name='title' placeholder='Title' onChange={this.handleChange} />
                 <input type='text' name='phone' placeholder='Phone' onChange={this.handleChange} />
@@ -21,4 +21,4 @@ class PersonalDetailsForm extends Component {
     }
 }
 
-export default PersonalDetailsForm;
+export default GeneralForm;

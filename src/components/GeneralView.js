@@ -1,38 +1,38 @@
 import React, { Component } from 'react';
 import Icon from '@mdi/react';
 import { mdiPhone, mdiEmail, mdiMapMarker } from '@mdi/js';
-import '../styles/PersonalDetailsView.css';
+import '../styles/GeneralView.css';
 
-class PersonalDetailsView extends Component {
+class GeneralView extends Component {
     render() {
         const { name, title, phone, email, location, summary } = this.props;
         return (
-            <div className='personal-details-view'>
-                <div className='personal-details'>
-                    <div className='personal-details-left'>
-                        <p className='personal-name'>{name}</p>
-                        <p className='personal-title'>{title}</p>
+            <div className='GeneralView-view'>
+                <div className='GeneralView-details'>
+                    <div className='GeneralView-details-left'>
+                        <p className='GeneralView-name'>{name}</p>
+                        <p className='GeneralView-title'>{title}</p>
                     </div>
-                    <div className='personal-details-right'>
-                        <div className='personal-detail'>
+                    <div className='GeneralView-details-right'>
+                        <div className='GeneralView-detail'>
                             <Icon path={mdiPhone} size={'16px'} />
                             <p>{phone}</p>
                         </div>
-                        <div className='personal-detail'>
+                        <div className='GeneralView-detail'>
                             <Icon path={mdiEmail} size={'16px'} />
                             <p>{email}</p>
                         </div>
-                        <div className='personal-detail'>
+                        <div className='GeneralView-detail'>
                             <Icon path={mdiMapMarker} size={'16px'} />
                             <p>{location}</p>
                         </div>
                     </div>    
                 </div>
                 <hr />
-                <p className='personal-summary'>{summary}</p>
+                <p className='GeneralView-summary'>{summary}</p>
             </div>
         );
     }
 }
 
-export default PersonalDetailsView;
+export default GeneralView;
