@@ -1,0 +1,54 @@
+.personal-details-view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.personal-details {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-auto-rows: 1fr;
+}
+
+.personal-details-left {
+    display: grid;
+    gap: 10px;
+}
+
+.personal-details-right {
+    display: grid;
+    grid-template-columns: min-content;
+    justify-content: end;
+    gap: 10px;
+}
+
+.personal-detail {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.personal-name {
+    font-size: 32px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #0c4a6e;
+}
+
+.personal-title {
+    font-size: 22px;
+    color: #64748b;
+}
+
+.personal-detail p {
+    font-size: 12px;
+}
+
+hr {
+    border: 2px solid #0284c7;
+}
+
+.personal-summary {
+    font-size: 14px;
+}
