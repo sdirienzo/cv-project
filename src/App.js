@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uniqid from 'uniqid';
 import GeneralView from './components/GeneralView';
 import GeneralForm from './components/GeneralForm';
 import EducationForm from './components/EducationForm';
@@ -9,7 +10,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      personalDetails: {
+      general: {
         name: '',
         title: '',
         phone: '',
@@ -17,18 +18,20 @@ class App extends Component {
         location: '',
         summary: '',
       },
+      educationExperiences: [],
+      workExperiences: [],
     };
   }
 
-  handlePersonalDetailsChange = (event) => {
+  handleGeneralDetailsChange = (event) => {
     const target = event.target;
     const value = target.value;
     const name = target.name;
 
     this.setState((prevState) => ({
       ...prevState,
-      personalDetails: {
-        ...prevState.personalDetails,
+      general: {
+        ...prevState.general,
         [name]: value
       }
     }));
@@ -39,12 +42,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className='App-left'>
-          <GeneralForm onFormChange={this.handlePersonalDetailsChange} />
-          <EducationForm />
+        <div className='App-form'>
+          <section className='App-form-section'>
+            <h2>General</h2>
+            <GeneralForm onFormChange={this.handleGeneralDetailsChange} />
+          </section>
+          <section className='App-form-section'>
+            <h2>Education</h2>
+            <EducationForm />
+          </section>
         </div>
-        <div className='App-right'>
-          <GeneralView {...this.state.personalDetails} />
+        <div className='App-view'>
+          <GeneralView {...this.state.general} />
         </div>
       </div>
     );

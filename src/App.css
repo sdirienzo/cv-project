@@ -20,23 +20,29 @@ html {
     font-family: 'Roboto', sans-serif;
 }
 
-.App-left,
-.App-right {
+.App-form,
+.App-view {
     width: 600px;
     height: min-content;
 }
 
-.App-left {
+.App-form {
     justify-self: end;
     display: flex;
     flex-direction: column;
-    row-gap: 30px;
+    row-gap: 20px;
     padding: 30px;
     border: 3px solid #0c4a6e;
     border-radius: 4px;
 }
 
-.App-right {
+.App-form-section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.App-view {
     border: 1px solid #64748b;
     justify-self: start;
     padding: 50px 30px;

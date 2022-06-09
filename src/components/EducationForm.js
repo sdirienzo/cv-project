@@ -9,7 +9,6 @@ class EducationForm extends Component {
     render() {
         return (
             <form>
-                <h2>Education</h2>
                 <input type='text' name='school' placeholder='School' onChange={this.handleChange} />
                 <input type='text' name='field' placeholder='Field of Study / Course' onChange={this.handleChange} />
                 <input type='text' name='start' placeholder='Start Date' onChange={this.handleChange} />
