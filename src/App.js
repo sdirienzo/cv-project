@@ -18,12 +18,20 @@ class App extends Component {
         location: '',
         summary: '',
       },
-      educationExperiences: [],
+      educationExperiences: [
+        {
+          id: uniqid(),
+          school: '',
+          field: '',
+          start: '',
+          end: '',
+        },
+      ],
       workExperiences: [],
     };
   }
 
-  handleGeneralDetailsChange = (event) => {
+  handleGeneralChange = (event) => {
     const target = event.target;
     const value = target.value;
     const name = target.name;
@@ -35,21 +43,40 @@ class App extends Component {
         [name]: value
       }
     }));
+  }
 
-    console.log(this.state);
+  handleEducationChange = (event) => {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+    const index = this.state.educationExperiences.findIndex(experience => experience.id === target.parentNode.getAttribute('data-key'));
+     
+    let experience = this.state.educationExperiences[index];
+    experience[name] = value;
+    
+    let experiences = [...this.state.educationExperiences];
+    experiences[index] = experience;
+    
+    this.setState((prevState) => ({
+      ...prevState,
+      educationExperiences: experiences,
+    }));
   }
 
   render() {
+    const { educationExperiences } = this.state;
     return (
       <div className="App">
         <div className='App-form'>
           <section className='App-form-section'>
             <h2>General</h2>
-            <GeneralForm onFormChange={this.handleGeneralDetailsChange} />
+            <GeneralForm onFormChange={this.handleGeneralChange} />
           </section>
           <section className='App-form-section'>
             <h2>Education</h2>
-            <EducationForm />
+            {educationExperiences.map((experience) =>
+              <EducationForm key={experience.id} dataKey={experience.id} onFormChange={this.handleEducationChange} />
+            )}
           </section>
         </div>
         <div className='App-view'>
