@@ -43,7 +43,10 @@ html {
 }
 
 .App-view {
-    border: 1px solid #64748b;
     justify-self: start;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
     padding: 50px 30px;
+    border: 1px solid #64748b;
 }

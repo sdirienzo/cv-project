@@ -4,6 +4,7 @@ import GeneralView from './components/GeneralView';
 import GeneralForm from './components/GeneralForm';
 import EducationForm from './components/EducationForm';
 import './App.css';
+import EducationView from './components/EducationView';
 
 class App extends Component {
   constructor(props) {
@@ -81,6 +82,9 @@ class App extends Component {
         </div>
         <div className='App-view'>
           <GeneralView {...this.state.general} />
+          {educationExperiences.map((experience) => 
+            <EducationView key={uniqid()} {...experience} />
+          )}
         </div>
       </div>
     );
