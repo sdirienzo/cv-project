@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import './App.css';
 import uniqid from 'uniqid';
 import GeneralView from './components/GeneralView';
 import GeneralForm from './components/GeneralForm';
 import EducationForm from './components/EducationForm';
-import './App.css';
 import EducationView from './components/EducationView';
+import WorkForm from './components/WorkForm';
+import WorkView from './components/WorkView';
 
 class App extends Component {
   constructor(props) {
@@ -28,7 +30,16 @@ class App extends Component {
           end: '',
         },
       ],
-      workExperiences: [],
+      workExperiences: [
+        {
+          id: uniqid(),
+          company: '',
+          position: '',
+          start: '',
+          end: '',
+          description: '',
+        }
+      ],
     };
   }
 
@@ -44,6 +55,51 @@ class App extends Component {
         [name]: value
       }
     }));
+  }
+
+  handleWorkChange = (event, key) => {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+    const index = this.state.workExperiences.findIndex(experience => experience.id === key);
+     
+    let experience = this.state.workExperiences[index];
+    experience[name] = value;
+    
+    let experiences = [...this.state.workExperiences];
+    experiences[index] = experience;
+    
+    this.setState((prevState) => ({
+      ...prevState,
+      workExperiences: experiences,
+    }));
+  }
+
+  addWorkExperience = () => {
+    const newExperience = {
+      id: uniqid(),
+      company: '',
+      position: '',
+      start: '',
+      end: '',
+      description: '',
+    }
+
+    this.setState((prevState) => ({
+      ...prevState,
+      workExperiences: [...prevState.workExperiences, newExperience],
+    }));
+  }
+
+  deleteWorkExperience = (key) => {
+    if (this.state.workExperiences.length === 1) {
+      return;
+    }
+
+    this.setState((prevState) => ({
+      ...prevState,
+      workExperiences: prevState.workExperiences.filter((experience) => experience.id !== key)
+    }))
   }
 
   handleEducationChange = (event, key) => {
@@ -91,13 +147,19 @@ class App extends Component {
   }
 
   render() {
-    const { educationExperiences } = this.state;
+    const { educationExperiences, workExperiences } = this.state;
     return (
       <div className="App">
         <div className='App-form'>
           <section className='App-form-section'>
             <h2>General</h2>
             <GeneralForm onFormChange={this.handleGeneralChange} />
+          </section>
+          <section className='App-form-section'>
+            <h2>Work Experience</h2>
+            {workExperiences.map((experience) =>
+              <WorkForm key={experience.id} dataKey={experience.id} onFormChange={this.handleWorkChange} onAdd={this.addWorkExperience} onDelete={this.deleteWorkExperience} />
+            )}
           </section>
           <section className='App-form-section'>
             <h2>Education</h2>
@@ -111,10 +173,12 @@ class App extends Component {
               <GeneralView {...this.state.general} />
           </section>
           <section className='App-view-section'>
+            <p className='App-section-header'>Work Experience</p>
+            {workExperiences.map((experience) => <WorkView key={uniqid()} {...experience} />)}
+          </section>
+          <section className='App-view-section'>
             <p className='App-section-header'>Education</p>
-            {educationExperiences.map((experience) => 
-              <EducationView key={uniqid()} {...experience} />
-            )}
+            {educationExperiences.map((experience) => <EducationView key={uniqid()} {...experience} />)}
           </section>
         </div>
       </div>

@@ -2,22 +2,26 @@ p {
     font-size: 14px;
 }
 
-.EducationView-row {
+.WorkView-row {
     display: flex;
     justify-content: space-between;
 }
 
-.EducationView-field,
-.EducationView-dates {
+.WorkView-field,
+.WorkView-dates {
     font-weight: bold;
     color: #334155;
 }
 
-.EducationView-school {
+.WorkView-company {
     color: #64748b;
 }
 
-.EducationView-row-right {
+.WorkView-row-right {
     display: flex;
     column-gap: 5px;
+}
+
+.WorkView-description {
+    color: #334155;
 }
