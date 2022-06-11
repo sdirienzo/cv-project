@@ -6,6 +6,7 @@ import GeneralForm from './components/GeneralForm';
 import EducationForm from './components/EducationForm';
 import EducationView from './components/EducationView';
 import WorkForm from './components/WorkForm';
+import WorkView from './components/WorkView';
 
 class App extends Component {
   constructor(props) {
@@ -172,10 +173,12 @@ class App extends Component {
               <GeneralView {...this.state.general} />
           </section>
           <section className='App-view-section'>
+            <p className='App-section-header'>Work Experience</p>
+            {workExperiences.map((experience) => <WorkView key={uniqid()} {...experience} />)}
+          </section>
+          <section className='App-view-section'>
             <p className='App-section-header'>Education</p>
-            {educationExperiences.map((experience) => 
-              <EducationView key={uniqid()} {...experience} />
-            )}
+            {educationExperiences.map((experience) => <EducationView key={uniqid()} {...experience} />)}
           </section>
         </div>
       </div>
