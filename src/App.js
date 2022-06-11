@@ -64,6 +64,21 @@ class App extends Component {
     }));
   }
 
+  addEducationExperience = () => {
+    const newExperience = {
+      id: uniqid(),
+      school: '',
+      field: '',
+      start: '',
+      end: '',
+    }
+
+    this.setState((prevState) => ({
+      ...prevState,
+      educationExperiences: [...prevState.educationExperiences, newExperience],
+    }));
+  }
+
   render() {
     const { educationExperiences } = this.state;
     return (
@@ -76,15 +91,20 @@ class App extends Component {
           <section className='App-form-section'>
             <h2>Education</h2>
             {educationExperiences.map((experience) =>
-              <EducationForm key={experience.id} dataKey={experience.id} onFormChange={this.handleEducationChange} />
+              <EducationForm key={experience.id} dataKey={experience.id} onFormChange={this.handleEducationChange} onAdd={this.addEducationExperience} />
             )}
           </section>
         </div>
         <div className='App-view'>
-          <GeneralView {...this.state.general} />
-          {educationExperiences.map((experience) => 
-            <EducationView key={uniqid()} {...experience} />
-          )}
+          <section className='App-view-section'>
+              <GeneralView {...this.state.general} />
+          </section>
+          <section className='App-view-section'>
+            <p className='App-section-header'>Education</p>
+            {educationExperiences.map((experience) => 
+              <EducationView key={uniqid()} {...experience} />
+            )}
+          </section>
         </div>
       </div>
     );

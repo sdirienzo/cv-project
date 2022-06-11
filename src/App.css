@@ -39,7 +39,7 @@ html {
 .App-form-section {
     display: flex;
     flex-direction: column;
-    row-gap: 5px;
+    row-gap: 10px;
 }
 
 .App-view {
@@ -49,4 +49,17 @@ html {
     row-gap: 20px;
     padding: 50px 30px;
     border: 1px solid #64748b;
+}
+
+.App-view-section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+}
+
+.App-section-header {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #0284c7;
 }

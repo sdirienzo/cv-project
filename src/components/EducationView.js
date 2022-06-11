@@ -6,7 +6,6 @@ class EducationView extends Component {
         const { school, field, start, end } = this.props;
         return (
             <div className='EducationView-view'>
-                <p className='EducationView-header'>Education</p>
                 <div className='EducationView-row'>
                     <div className='EducationView-row-left'>
                         <p className='EducationView-field'>{field}</p>
