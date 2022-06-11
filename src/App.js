@@ -46,11 +46,11 @@ class App extends Component {
     }));
   }
 
-  handleEducationChange = (event) => {
+  handleEducationChange = (event, key) => {
     const target = event.target;
     const value = target.value;
     const name = target.name;
-    const index = this.state.educationExperiences.findIndex(experience => experience.id === target.parentNode.getAttribute('data-key'));
+    const index = this.state.educationExperiences.findIndex(experience => experience.id === key);
      
     let experience = this.state.educationExperiences[index];
     experience[name] = value;
@@ -79,6 +79,17 @@ class App extends Component {
     }));
   }
 
+  deleteEducationExperience = (key) => {
+    if (this.state.educationExperiences.length === 1) {
+      return;
+    }
+
+    this.setState((prevState) => ({
+      ...prevState,
+      educationExperiences: prevState.educationExperiences.filter((experience) => experience.id !== key)
+    }))
+  }
+
   render() {
     const { educationExperiences } = this.state;
     return (
@@ -91,7 +102,7 @@ class App extends Component {
           <section className='App-form-section'>
             <h2>Education</h2>
             {educationExperiences.map((experience) =>
-              <EducationForm key={experience.id} dataKey={experience.id} onFormChange={this.handleEducationChange} onAdd={this.addEducationExperience} />
+              <EducationForm key={experience.id} dataKey={experience.id} onFormChange={this.handleEducationChange} onAdd={this.addEducationExperience} onDelete={this.deleteEducationExperience} />
             )}
           </section>
         </div>

@@ -3,7 +3,8 @@ import '../styles/Form.css'
 
 class EducationForm extends Component {
     handleChange = (event) => {
-        this.props.onFormChange(event);
+        const key = this.props.dataKey
+        this.props.onFormChange(event, key);
     }
 
     handleAdd = (event) => {
@@ -11,8 +12,14 @@ class EducationForm extends Component {
         this.props.onAdd();
     }
 
+    handleDelete = (event) => {
+        const key = this.props.dataKey;
+        event.preventDefault();
+        this.props.onDelete(key);
+    }
+
     render() {
-        const { dataKey, displayDelete, displayAdd } = this.props;
+        const { dataKey } = this.props;
         return (
             <form data-key={dataKey}>
                 <input type='text' name='school' placeholder='School' onChange={this.handleChange} />
@@ -20,10 +27,8 @@ class EducationForm extends Component {
                 <input type='text' name='start' placeholder='Start Date' onChange={this.handleChange} />
                 <input type='text' name='end' placeholder='End Date' onChange={this.handleChange} />
                 <div className='btn-row'>
-                    {displayDelete ? <button className='btn btn-danger visible'>Delete</button> : <button className='btn btn-danger invisible'>Delete</button>}
-                    {/* <button className='btn btn-danger'>Delete</button> */}
-                    {displayAdd ? <button className='btn btn-success visible' onClick={this.handleAdd}>Add</button> : <button className='btn btn-success invisible' onClick={this.handleAdd}>Add</button>}
-                    {/* <button className='btn btn-success' onClick={this.handleAdd}>Add</button> */}
+                    <button className='btn btn-danger' onClick={this.handleDelete}>Delete</button>
+                    <button className='btn btn-success' onClick={this.handleAdd}>Add</button>
                 </div>
             </form>  
         );
