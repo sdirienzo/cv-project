@@ -31,9 +31,8 @@ const WorkForm = (props) => {
                 <button className='btn btn-danger' onClick={handleDelete}>Delete</button>
                 <button className='btn btn-success' onClick={handleAdd}>Add</button>
             </div>
-        </form>  
+        </form>
     );
-
-}
+};
 
 export default WorkForm;
